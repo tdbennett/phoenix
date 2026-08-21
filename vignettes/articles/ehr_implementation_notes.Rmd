@@ -410,19 +410,23 @@ Expected metadata:
 
 **Step-By-Step Instructions:**
 NOTE: these instructions are intended for prospective or real-time assessments
-and differ from the implication used in the retrospective data for the
-development of the Phoenix criteria.
+and extends the logic used in the retrospective data analysis used when
+developing the Phoenix criteria.
 
 1. Pick the score time. Example: ``We are scoring the patient at 10:15.''
 2. Look back only as far as the blood-pressure look-back window allows. For
    published Phoenix, this is 6 hours.
 3. Define 4 candidate estimators:
-   a. Find the most recent arterial-line MAP within that window. If there is one, call it Candidate 1.
+   a. Define Candidate 1.
+      i. Find the most recent arterial-line MAP within that window.
+      ii. If one exists this is Candidate 1; otherwise Candidate 1 is missing.
    b. Define Candidate 2.
       i. Find the most recent arterial-line SBP and arterial-line DBP within that window.
       ii. Only use arterial SBP and DBP to calculate MAP if they were recorded close enough together (within 10 minutes of each other). If they are too far apart in time, do not use them together.
       iii. If arterial SBP and DBP can be used together, calculate: MAP = one third SBP + two thirds DBP. Call this Candidate 2.
-   c. Find the most recent cuff MAP within the window. If there is one, call it Candidate 3.
+   c. Define Candidate 3.
+      i. Find the most recent cuff MAP within the window.
+      ii. If one exists this is Candidate 3; otherwise Candidate 3 is missing.
    d. Define Candidate 4.
       i. Find the most recent cuff SBP and cuff DBP within the window.
       ii. Only use cuff SBP and DBP to calculate MAP if they were recorded close enough together (within 10 minutes of each other). If they are too far apart in time, do not use them together.
