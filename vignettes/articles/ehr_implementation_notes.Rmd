@@ -410,8 +410,8 @@ Expected metadata:
 
 **Step-By-Step Instructions:**
 NOTE: these instructions are intended for prospective or real-time assessments
-and extends the logic used in the retrospective data analysis used when
-developing the Phoenix criteria.
+and extends the logic from the retrospective data analysis used to develop
+the Phoenix criteria.
 
 1. Pick the score time. Example: ``We are scoring the patient at 10:15.''
 2. Look back only as far as the blood-pressure look-back window allows. For
@@ -422,14 +422,14 @@ developing the Phoenix criteria.
       ii. If one exists this is Candidate 1; otherwise Candidate 1 is missing.
    b. Define Candidate 2.
       i. Find the most recent arterial-line SBP and arterial-line DBP within that window.
-      ii. Only use arterial SBP and DBP to calculate MAP if they were recorded close enough together (within 10 minutes of each other). If they are too far apart in time, do not use them together.
+      ii. Only use arterial SBP and DBP to calculate MAP if they were recorded close enough together (_within 10 minutes of each other_). If they are too far apart in time, do not use them together.
       iii. If arterial SBP and DBP can be used together, calculate: MAP = one third SBP + two thirds DBP. Call this Candidate 2.
    c. Define Candidate 3.
       i. Find the most recent cuff MAP within the window.
       ii. If one exists this is Candidate 3; otherwise Candidate 3 is missing.
    d. Define Candidate 4.
       i. Find the most recent cuff SBP and cuff DBP within the window.
-      ii. Only use cuff SBP and DBP to calculate MAP if they were recorded close enough together (within 10 minutes of each other). If they are too far apart in time, do not use them together.
+      ii. Only use cuff SBP and DBP to calculate MAP if they were recorded close enough together (_within 10 minutes of each other_). If they are too far apart in time, do not use them together.
       iii. If cuff SBP and DBP can be used together, calculate: MAP = one third SBP + two thirds DBP. Call this Candidate 4.
 
 4. For each candidate, figure out how old it is at the score time.
@@ -438,7 +438,7 @@ developing the Phoenix criteria.
       i. Candidate 1 and Candidate 3 have the same age as the reported value
       ii. Candidate 2 and 4: these are as old as the youngest component.  Example: SBP most recent reported value at 10:08; DBP last reported value at 10:03. Then the Candidate will be considered to have reported time of 10:08.
 
-5. If two candidates are equally new (within one minute), use this tie-breaker order:
+5. If two candidates are equally new (_within one minute_), use this tie-breaker order:
    a. Arterial-line MAP measured directly: Candidate 1.
    b. Arterial-line MAP calculated from arterial SBP and DBP: Candidate 2.
    c. Cuff MAP measured directly: Candidate 3.
@@ -450,30 +450,32 @@ developing the Phoenix criteria.
 Simple Rule To Remember: Use the newest usable MAP. If there is a tie, prefer
 arterial over cuff, and prefer directly measured MAP over calculated MAP.
 
-Example: The candidate columns have the MAP value and the (age).
 
- | Time  | Arterial MAP | Cuff SBP | Cuff DBP | Candidate 1 | Candidate 4 | Selected Candidate | Note |
- | ----: | :---:        | :---:    | :---:    | :----       | :----       | :--:               | :--: |
- | 10:00 |              |          |          |             |             |                    |      |
- | 10:01 | 55           |          |          | 55 (0)      |             | 1                  | 1.   |
- | 10:02 | 56           |          |          | 56 (0)      |             | 1                  | 1.   |
- | 10:03 | 58           |          |          | 58 (0)      |             | 1                  | 1.   |
- | 10:04 |              | 63       | 47       | 58 (1)      | 52.3333 (0) | 1                  | 2.   |
- | 10:05 |              |          |          | 58 (2)      | 52.3333 (1) | 1                  | 2.   |
- | 10:06 |              |          |          | 58 (3)      | 52.3333 (2) | 1                  | 2.   |
- | 10:07 |              | 64       | 46       | 58 (4)      | 52 (0)      | 4                  | 3.   |
- | 10:08 | 57           |          |          | 57 (0)      | 52 (1)      | 1                  | 4.   |
- | 10:09 |              |          |          | 57 (1)      | 52 (2)      | 1                  | 4.   |
- | 10:10 |              |          |          | 57 (2)      | 52 (3)      | 1                  | 4.   |
- | 10:11 |              | 63       |          | 57 (3)      | 51.6667 (0) | 4                  | 5.   |
- | 10:12 |              |          |          | 57 (4)      | 51.6667 (1) | 4                  | 5.   |
- | 10:13 |              |          |          | 57 (5)      | 51.6667 (2) | 4                  | 5.   |
- | 10:14 |              |          |          | 57 (6)      | 51.6667 (3) | 4                  | 5.   |
- | 10:15 |              |          |          | 57 (7)      | 51.6667 (4) | 4                  | 5.   |
- | 10:16 |              |          |          | 57 (8)      | 51.6667 (5) | 4                  | 5.   |
- | 10:17 |              |          |          | 57 (9)      | 51.6667 (6) | 4                  | 5.   |
- | 10:18 |              |          |          | 57 (10)     | 51.6667 (7) | 4                  | 5.   |
- | 10:19 |              | 62       |          | 57 (11)     | ------      | 1                  | 6.   |
+
+**Example:** The candidate columns have the MAP value and the (value age: how old is the value, in minutes).
+
+  | Time  | Arterial MAP | Cuff SBP | Cuff DBP | Candidate 1: (age) | Candidate 4: (age) | Selected Candidate | Note | 
+  | ----: | :---:        | :---:    | :---:    | :----:             | :----:             | :--:               | :--: | 
+  | 10:00 |              |          |          |                    |                    |                    |      | 
+  | 10:01 | 55           |          |          | 55 (0)             |                    | 1                  | 1.   | 
+  | 10:02 | 56           |          |          | 56 (0)             |                    | 1                  | 1.   | 
+  | 10:03 | 58           |          |          | 58 (0)             |                    | 1                  | 1.   | 
+  | 10:04 |              | 63       | 47       | 58 (1)             | 52.33 (0)          | 1                  | 2.   | 
+  | 10:05 |              |          |          | 58 (2)             | 52.33 (1)          | 1                  | 2.   | 
+  | 10:06 |              |          |          | 58 (3)             | 52.33 (2)          | 1                  | 2.   | 
+  | 10:07 |              | 64       | 46       | 58 (4)             | 52 (0)             | 4                  | 3.   | 
+  | 10:08 | 57           |          |          | 57 (0)             | 52 (1)             | 1                  | 4.   | 
+  | 10:09 |              |          |          | 57 (1)             | 52 (2)             | 1                  | 4.   | 
+  | 10:10 |              |          |          | 57 (2)             | 52 (3)             | 1                  | 4.   | 
+  | 10:11 |              | 63       |          | 57 (3)             | 51.67 (0)          | 4                  | 5.   | 
+  | 10:12 |              |          |          | 57 (4)             | 51.67 (1)          | 4                  | 5.   | 
+  | 10:13 |              |          |          | 57 (5)             | 51.67 (2)          | 4                  | 5.   | 
+  | 10:14 |              |          |          | 57 (6)             | 51.67 (3)          | 4                  | 5.   | 
+  | 10:15 |              |          |          | 57 (7)             | 51.67 (4)          | 4                  | 5.   | 
+  | 10:16 |              |          |          | 57 (8)             | 51.67 (5)          | 4                  | 5.   | 
+  | 10:17 |              |          |          | 57 (9)             | 51.67 (6)          | 4                  | 5.   | 
+  | 10:18 |              |          |          | 57 (10)            | 51.67 (7)          | 4                  | 5.   | 
+  | 10:19 |              | 62       |          | 57 (11)            | ----               | 1                  | 6.   | 
 
 Notes:
 
